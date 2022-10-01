@@ -35,39 +35,13 @@ footer p{
     text-align:center;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+
+body {
+	font-family: Monospace;
+	font-weight: bold;
+	background-color: #ccccff;
+	margin: 0px;
+	overflow: hidden;
 }
-.oxy-header-row {
-    width: 100%;
-    display: block;
-  }
-
-  .oxy-header-container {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  .ct-section-inner-wrap, .oxy-header-container {
-    max-width: 1300px;
-  }
-  .oxy-header-container {
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-  }
-
-  .oxy-header-left {
-    justify-content: flex-start;
-  }
-  .oxy-header-center, .oxy-header-left, .oxy-header-right {
-    display: flex;
-    align-items: center;
-  }
 
 

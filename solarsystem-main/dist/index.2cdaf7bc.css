@@ -29,43 +29,12 @@ footer p {
   text-align: center;
 }
 
-html, body {
-  height: 100%;
+body {
+  background-color: #ccf;
   margin: 0;
-  padding: 0;
-}
-
-.oxy-header-row {
-  width: 100%;
-  display: block;
-}
-
-.oxy-header-container {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.ct-section-inner-wrap, .oxy-header-container {
-  max-width: 1300px;
-}
-
-.oxy-header-container {
-  height: 100%;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-}
-
-.oxy-header-left {
-  justify-content: flex-start;
-}
-
-.oxy-header-center, .oxy-header-left, .oxy-header-right {
-  align-items: center;
-  display: flex;
+  font-family: monospace;
+  font-weight: bold;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=index.2cdaf7bc.css.map */
