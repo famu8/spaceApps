@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 
 import starsTexture from '../img/stars.jpg';
-import moonTexture from '../img/moon.jpg';
+import moonTexture from '../img/moonheatmap.jpg';
 
 const renderer = new THREE.WebGLRenderer();
 
@@ -58,5 +58,5 @@ renderer.setAnimationLoop(animate);
 window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth-100, window.innerHeight-100);
 });

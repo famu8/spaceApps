@@ -1,0 +1,73 @@
+
+
+body{
+    font-family:Arial;
+    /*background-color:rgb(5, 39, 69);*/
+    background-image:url(./img/stars.jpg);
+}   
+
+p{color:whitesmoke;}
+
+
+
+ul {       
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+li {
+    
+    position: relative;
+    display: inline-block;
+    /*padding:1em;*/
+    text-align: center;
+}
+#info{
+    text-decoration: none;
+    color:whitesmoke;
+    transition-duration: 0.2s;
+}
+
+
+footer p{
+    text-align:center;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.oxy-header-row {
+    width: 100%;
+    display: block;
+  }
+
+  .oxy-header-container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .ct-section-inner-wrap, .oxy-header-container {
+    max-width: 1300px;
+  }
+  .oxy-header-container {
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+
+  .oxy-header-left {
+    justify-content: flex-start;
+  }
+  .oxy-header-center, .oxy-header-left, .oxy-header-right {
+    display: flex;
+    align-items: center;
+  }
+
+

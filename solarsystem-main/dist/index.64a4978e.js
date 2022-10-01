@@ -537,8 +537,8 @@ var _three = require("three");
 var _orbitControlsJs = require("three/examples/jsm/controls/OrbitControls.js");
 var _starsJpg = require("../img/stars.jpg");
 var _starsJpgDefault = parcelHelpers.interopDefault(_starsJpg);
-var _moonJpg = require("../img/moon.jpg");
-var _moonJpgDefault = parcelHelpers.interopDefault(_moonJpg);
+var _moonheatmapJpg = require("../img/moonheatmap.jpg");
+var _moonheatmapJpgDefault = parcelHelpers.interopDefault(_moonheatmapJpg);
 const renderer = new _three.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -561,7 +561,7 @@ scene.background = cubeTextureLoader.load([
 const textureLoader = new _three.TextureLoader();
 const moonGeo = new _three.SphereGeometry(16, 30, 30);
 const moonMat = new _three.MeshBasicMaterial({
-    map: textureLoader.load((0, _moonJpgDefault.default))
+    map: textureLoader.load((0, _moonheatmapJpgDefault.default))
 });
 const sun = new _three.Mesh(moonGeo, moonMat);
 scene.add(sun);
@@ -574,10 +574,10 @@ renderer.setAnimationLoop(animate);
 window.addEventListener("resize", function() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth - 100, window.innerHeight - 100);
 });
 
-},{"three":"bcw9N","three/examples/jsm/controls/OrbitControls.js":"2zwek","../img/stars.jpg":"9wBPV","../img/moon.jpg":"jsVay","@parcel/transformer-js/src/esmodule-helpers.js":"72xaU"}],"bcw9N":[function(require,module,exports) {
+},{"three":"bcw9N","three/examples/jsm/controls/OrbitControls.js":"2zwek","../img/stars.jpg":"9wBPV","@parcel/transformer-js/src/esmodule-helpers.js":"72xaU","../img/moonheatmap.jpg":"5VyYn"}],"bcw9N":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ACESFilmicToneMapping", ()=>ACESFilmicToneMapping);
@@ -30388,8 +30388,8 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"jsVay":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("e6MYJ") + "moon.398a608a.jpg" + "?" + Date.now();
+},{}],"5VyYn":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("e6MYJ") + "moonheatmap.39e7460b.jpg" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"1MFz5"}]},["8NohH","goJYj"], "goJYj", "parcelRequire7930")
 
