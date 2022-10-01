@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Graphulus: Parametric Curves (Three.js)</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel=stylesheet href="https://stemkoski.github.io/Three.js/css/base.css"/>
+</head> 
+<body>
+
+<script src="https://stemkoski.github.io/Three.js/js/Three.js"></script>
+<script src="https://stemkoski.github.io/Three.js/js/Detector.js"></script>
+<script src="https://stemkoski.github.io/Three.js/js/Stats.js"></script>
+<script src="https://stemkoski.github.io/Three.js/js/TrackballControls.js"></script>
+<script src="https://stemkoski.github.io/Three.js/js/THREEx.KeyboardState.js"></script>
+<script src="https://stemkoski.github.io/Three.js/js/THREEx.FullScreen.js"></script>
+<script src="https://stemkoski.github.io/Three.js/js/THREEx.WindowResize.js"></script>
+
+<script type='text/javascript' src='https://stemkoski.github.io/Three.js/js/DAT.GUI.min.js'></script>
+
+<!-- http://silentmatt.com/javascript-expression-evaluator/ -->
+<script src="https://stemkoski.github.io/Three.js/js/parser.js"></script>
+
+<!-- jQuery code to display an information button and box when clicked. -->
+<script src="https://stemkoski.github.io/Three.js/js/jquery-1.9.1.js"></script>
+<script src="https://stemkoski.github.io/Three.js/js/jquery-ui.js"></script>
+<link rel=stylesheet href="https://stemkoski.github.io/Three.js/css/jquery-ui.css" />
+<link rel=stylesheet href="https://stemkoski.github.io/Three.js/css/info.css"/>
+<script src="https://stemkoski.github.io/Three.js/js/info.js"></script>
+<div id="infoButton"></div>
+<div id="infoBox" title="Demo Information">
+This three.js demo is part of a collection at
+<a href="http://stemkoski.github.io/Three.js/">http://stemkoski.github.io/Three.js/</a>
+</div>
+<!-- ------------------------------------------------------------ -->
+
+<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+<script type="module">
+
+
+// MAIN
+import * as THREE from 'three';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+
+import starsTexture from './img/stars.jpg';
+import moonTexture from './img/moonheatmap.jpg';
+
+const renderer = new THREE.WebGLRenderer();
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+
+const orbit = new OrbitControls(camera, renderer.domElement);
+
+camera.position.set(50, 10, 10);
+orbit.update();
+
+const ambientLight = new THREE.AmbientLight(0x333333);
+scene.add(ambientLight);
+
+const cubeTextureLoader = new THREE.CubeTextureLoader();
+scene.background = cubeTextureLoader.load([
+    starsTexture,
+    starsTexture,
+    starsTexture,
+    starsTexture,
+    starsTexture,
+    starsTexture
+]);
+
+const textureLoader = new THREE.TextureLoader();
+
+const moonGeo = new THREE.SphereGeometry(16, 30, 30);
+const moonMat = new THREE.MeshBasicMaterial({
+    map: textureLoader.load(moonTexture)
+});
+// standard global variables
+var container, scene,  controls, stats;
+var keyboard = new THREEx.KeyboardState();
+var clock = new THREE.Clock();
+
+// custom global variables
+var gui, gui_xText, gui_yText, gui_zText, 
+	gui_tMin, gui_tMax,
+	gui_a, gui_b, gui_c, gui_d,
+	gui_segments, gui_radiusSegments, gui_tubeRadius;
+
+var autoUpdate = true;
+
+var moon;
+
+
+// extrusion segments -- how many sample points to take along curve.
+var segments = 120;
+// how many sides the tube cross-section has
+var radiusSegments = 6;
+var tubeRadius = 0.1;
+
+var tMin = -2.11, tMax = 2.11, tRange = tMax - tMin;
+
+var xFuncText = "t^3 - 3*t";
+var yFuncText = "t^4 - 4*t^2";
+var zFuncText = "(t^5 - 10*t)/5";
+var xFunc = Parser.parse(xFuncText).toJSFunction( ['t'] );
+var yFunc = Parser.parse(yFuncText).toJSFunction( ['t'] );
+var zFunc = Parser.parse(zFuncText).toJSFunction( ['t'] );
+
+// parameters for the equations
+var a = 0.01, b = 0.01, c = 0.01, d = 0.01;
+
+var xMin = xMax = yMin = yMax = zMin = zMax = 0; // for autosizing window
+	
+
+
+init();
+animate();
+
+// FUNCTIONS 		
+function init() 
+{
+	// SCENE
+	scene = new THREE.Scene();
+	// CAMERA
+	var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+	var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+	camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+	scene.add(camera);
+	// RENDERER
+	if ( Detector.webgl )
+		renderer = new THREE.WebGLRenderer( {antialias:true} );
+	else
+		renderer = new THREE.CanvasRenderer(); 
+	renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	container = document.getElementById( 'ThreeJS' );
+	container.appendChild( renderer.domElement );
+	// EVENTS
+	THREEx.WindowResize(renderer, camera);
+	THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+	// CONTROLS
+	controls = new THREE.TrackballControls( camera, renderer.domElement );
+	// STATS
+	stats = new Stats();
+	stats.domElement.style.position = 'absolute';
+	stats.domElement.style.bottom = '0px';
+	stats.domElement.style.zIndex = 100;
+	container.appendChild( stats.domElement );
+	
+	////////////
+	// CUSTOM //
+	////////////
+	
+	scene.add( new THREE.AxisHelper() );
+
+	
+	// Background clear color
+	// renderer.setClearColorHex( 0x888888, 1 );
+
+	///////////////////
+	//   GUI SETUP   //	
+	///////////////////
+
+	gui = new dat.GUI();
+	
+
+	// GUI -- equation
+	gui_xText = gui.add( this, 'xFuncText' ).name('x = f(t) = ');
+	gui_yText = gui.add( this, 'yFuncText' ).name('y = g(t) = ');
+	gui_zText = gui.add( this, 'zFuncText' ).name('z = h(t) = ');
+	gui_tMin = gui.add( this, 'tMin' ).name('t Minimum = ');
+	gui_tMax = gui.add( this, 'tMax' ).name('t Maximum = ');
+	gui_segments = gui.add( this, 'segments' ).name('t Segments = ').min(3).max(400).step(1);
+	gui_radiusSegments = gui.add( this, 'radiusSegments' ).name('r Segments = ').min(3).max(10).step(1);
+	gui_tubeRadius = gui.add( this, 'tubeRadius' ).name('Tube Radius = ').min(0).max(1);
+
+	// GUI -- parameters
+	var gui_parameters = gui.addFolder('Parameters');
+	a = b = c = d = 0.01;
+	autoUpdate = false;
+	gui_a = gui_parameters.add( this, 'a' ).min(-5).max(5).step(0.01).name('a = ');
+	gui_a.onChange( function(value) { if (autoUpdate) createGraph(); } );
+	gui_b = gui_parameters.add( this, 'b' ).min(-5).max(5).step(0.01).name('b = ');
+	gui_b.onChange( function(value) { if (autoUpdate) createGraph(); } );
+	gui_c = gui_parameters.add( this, 'c' ).min(-5).max(5).step(0.01).name('c = ');
+	gui_c.onChange( function(value) { if (autoUpdate) createGraph(); } );
+	gui_d = gui_parameters.add( this, 'd' ).min(-5).max(5).step(0.01).name('d = ');
+	gui_d.onChange( function(value) { if (autoUpdate) createGraph(); } );
+	gui_a.setValue(1);
+	gui_b.setValue(1);
+	gui_c.setValue(1);
+	gui_d.setValue(1);
+	autoUpdate = true;
+	
+	// GUI -- preset equations
+	var gui_preset = gui.addFolder('Preset equations');
+	gui_preset.add( parameters, 'preset1' ).name('Trefoil');
+
+	gui.add( parameters, 'resetCam' ).name("Reset Camera");
+	gui.add( parameters, 'graphFunc' ).name("Graph Function");	
+
+	preset01();
+}
+
+function createMoon()
+{
+	
+}
+
+function preset01()
+{
+	autoUpdate = false;
+	gui_xText.setValue("t^3 + a*t");
+	gui_yText.setValue("t^4 + b*t^2");
+	gui_zText.setValue("(1/10)*(t^5 + (-10)*t)");
+	gui_tMin.setValue(-2.1); gui_tMax.setValue(2.1); 
+	gui_a.setValue(-3);
+	gui_b.setValue(-4);
+	gui_segments.setValue(120);
+	createGraph(); resetCamera();
+	autoUpdate = true;
+}
+		
+function resetCamera()
+{
+	// CAMERA
+	var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+	var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 5000;
+	camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+	camera.position.set( 2*xMax, 0.5*yMax, 4*zMax );
+	camera.up = new THREE.Vector3( 0, 0, 1 );
+	camera.lookAt(scene.position);	
+	scene.add(camera);
+	
+	controls = new THREE.TrackballControls( camera, renderer.domElement );
+	THREEx.WindowResize(renderer, camera);
+}
+
+function animate() 
+{
+    requestAnimationFrame( animate );
+	render();		
+	update();
+}
+
+function update()
+{
+	if ( keyboard.pressed("z") ) 
+	{ 
+		// do something
+	}
+	
+	controls.update();
+	stats.update();
+}
+
+function render() 
+{
+	renderer.render( scene, camera );
+}
+
+</script>
+
+</body>
+</html>
