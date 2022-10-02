@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MoonquakeMap | Home </title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
+
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Visualizer</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <div class="aboutUsInfo">
+              <h1>About us</h1>
+              <p>We are a team of university students with the goal of increasing their knowledge by facing new challenges like this Space Apps Challenge. We have developed a fully functional website for the visualization of seismic data between expeditions to the moon in the Apollo Space Program.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>About the project</h1>
+            <p>Since first moon landing, several geophysical data was gathered which was improved on following missions
+              From this data, we have seen deep and soft moonquakes with its own magnitudes. On this web we have shown the capabilities of the 3D model
+              made by our team during the hackaton.</p>
+            <p>Scrool down to learn more about the project!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div>
+        <b><p class="initialInformation">Firstly, some information about the different sources we have obtained to tackle the project.</p></b><br>
+      </div>
+
+      <div class="col-lg-4">
+        <img src="../images/easep.jpg" class="easepRounded" width="140" height="140" alt="Early Apollo Surface Experiments Package (EASEP)">
+
+        <h2 class="fw-normal">EASEP</h2>
+        <p>The Early Apollo Surface Experiments Package are solar-powered seismic measurement and transmission instruments.</p>
+        <p><a class="btn btn-secondary" href="https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C">View details</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="../images/alsep.jpg" class="alsepRounded" width="130" height="130" alt="Early Apollo Surface Experiments Package (EASEP)">
+
+        <h2 class="fw-normal">ALSEP</h2>
+        <p>The Apollo Lunar Surface Experiments Package switches power generation to radioisotope thermoelectric generator and focuses on studying the lunar environment.</p>
+        <p><a class="btn btn-secondary" href="https://en.wikipedia.org/wiki/Apollo_Lunar_Surface_Experiments_Package#:~:text=The%20Apollo%20Lunar%20Surface%20Experiments,%2C%2016%2C%20and%2017).">View details</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="../images/apollo.jpg" class="apolloRounded" width="130" height="130" alt="Early Apollo Surface Experiments Package (EASEP)">
+        <h2 class="fw-normal">APOLLO</h2>
+        <p>And lastly, some information on the different moon missions.</p><br><br>
+        <p><a class="btn btn-secondary" href="https://www.nasa.gov/mission_pages/apollo/missions/index.html">View details</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">MoonquakeMap project. <span class="text-muted">It’ll blow your mind.</span></h2><br>
+        <p class="lead">Since the first lunar landing, we have data from different moonquakes obtained due to the instrumentation deployed by the different Apollo missions such as EASEP and ALSEP.
+
+          With this data we have created a 3D representation of the moon in which exact points appear as a representation of the moonquakes of each year since there is a record of the magnitude. More information <a href="https://2022.spaceappschallenge.org/challenges/2022-challenges/moonquake-map/details">here.</a></p>
+      </div>
+      <div class="col-md-5">
+        <img src="../images/moon.png" class="moonquakeRounded" width="600" height="auto" alt="Early Apollo Surface Experiments Package (EASEP)">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">More about the solution. <span class="text-muted">See for yourself.</span></h2><br>   
+        <p class="lead">This is the application we have created. You can choose a year in the drop-down menu above and it will show you the seismic events of that year and their magnitude in a 3D model of the moon that you can move 360º and see the exact position in which they occurred.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img id="mapaCalor" src="../images/spaceAppsphoto.jpg" class="moonquakeRounded" width="500" height="auto" alt="Early Apollo Surface Experiments Package (EASEP)">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one.</h2>
+        <p class="lead">This video shows you a brief explanation of how the application works and what functionalities it offers.</p>
+      </div>
+      <div class="col-md-5">
+        <img id="mapaCalor" src="../images/nasaMiniature.jpg" class="moonquakeRounded" width="500" height="auto" alt="Early Apollo Surface Experiments Package (EASEP)">
+      </div>
+    </div>
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2022–2022 MoonquakeMap</p>
+  </footer>
+</main>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

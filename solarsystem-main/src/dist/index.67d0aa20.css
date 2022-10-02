@@ -1,0 +1,368 @@
+.dg ul {
+  width: 100%;
+  clear: both;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dg.ac {
+  height: 0;
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.dg:not(.ac) .main {
+  overflow: hidden;
+}
+
+.dg.main {
+  -o-transition: opacity .1s linear;
+  transition: opacity .1s linear;
+}
+
+.dg.main.taller-than-window {
+  overflow-y: auto;
+}
+
+.dg.main.taller-than-window .close-button {
+  opacity: 1;
+  border-top: 1px solid #2c2c2c;
+  margin-top: -1px;
+}
+
+.dg.main ul.closed .close-button {
+  opacity: 1 !important;
+}
+
+.dg.main:hover .close-button, .dg.main .close-button.drag {
+  opacity: 1;
+}
+
+.dg.main .close-button {
+  -o-transition: opacity .1s linear;
+  height: 20px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #000;
+  border: 0;
+  line-height: 19px;
+  transition: opacity .1s linear;
+  position: absolute;
+}
+
+.dg.main .close-button:hover {
+  background-color: #111;
+}
+
+.dg.a {
+  float: right;
+  margin-right: 15px;
+  overflow-x: hidden;
+}
+
+.dg.a.has-save ul {
+  margin-top: 27px;
+}
+
+.dg.a.has-save ul.closed {
+  margin-top: 0;
+}
+
+.dg.a .save-row {
+  z-index: 1002;
+  position: fixed;
+  top: 0;
+}
+
+.dg li {
+  -o-transition: height .1s ease-out;
+  transition: height .1s ease-out;
+}
+
+.dg li:not(.folder) {
+  cursor: auto;
+  height: 27px;
+  padding: 0 4px 0 5px;
+  line-height: 27px;
+  overflow: hidden;
+}
+
+.dg li.folder {
+  border-left: 4px solid #0000;
+  padding: 0;
+}
+
+.dg li.title {
+  cursor: pointer;
+  margin-left: -4px;
+}
+
+.dg .closed li:not(.title), .dg .closed ul li, .dg .closed ul li > * {
+  height: 0;
+  border: 0;
+  overflow: hidden;
+}
+
+.dg .cr {
+  clear: both;
+  height: 27px;
+  padding-left: 3px;
+}
+
+.dg .property-name {
+  cursor: default;
+  float: left;
+  clear: left;
+  width: 40%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.dg .c {
+  float: left;
+  width: 60%;
+}
+
+.dg .c input[type="text"] {
+  width: 100%;
+  float: right;
+  border: 0;
+  margin-top: 4px;
+  padding: 3px;
+}
+
+.dg .has-slider input[type="text"] {
+  width: 30%;
+  margin-left: 0;
+}
+
+.dg .slider {
+  float: left;
+  width: 66%;
+  height: 19px;
+  margin-top: 4px;
+  margin-left: -5px;
+  margin-right: 0;
+}
+
+.dg .slider-fg {
+  height: 100%;
+}
+
+.dg .c input[type="checkbox"] {
+  margin-top: 9px;
+}
+
+.dg .c select {
+  margin-top: 5px;
+}
+
+.dg .cr.function, .dg .cr.function .property-name, .dg .cr.function *, .dg .cr.boolean, .dg .cr.boolean * {
+  cursor: pointer;
+}
+
+.dg .selector {
+  z-index: 10;
+  margin-top: 23px;
+  margin-left: -9px;
+  display: none;
+  position: absolute;
+}
+
+.dg .c:hover .selector, .dg .selector.drag {
+  display: block;
+}
+
+.dg li.save-row {
+  padding: 0;
+}
+
+.dg li.save-row .button {
+  padding: 0 6px;
+  display: inline-block;
+}
+
+.dg.dialogue {
+  width: 460px;
+  background-color: #222;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 15px;
+}
+
+#dg-new-constructor {
+  color: #222;
+  resize: none;
+  word-wrap: break-word;
+  width: 440px;
+  height: 100px;
+  border: 0;
+  margin: 12px 0;
+  padding: 10px;
+  font-family: Monaco, monospace;
+  font-size: 10px;
+  display: block;
+  position: relative;
+  overflow-y: scroll;
+  box-shadow: inset 1px 1px 1px #888;
+}
+
+#dg-local-explain {
+  background-color: #333;
+  border-radius: 3px;
+  margin-top: 10px;
+  padding: 8px;
+  font-size: 11px;
+  line-height: 17px;
+  display: none;
+}
+
+#dg-local-explain code {
+  font-size: 10px;
+}
+
+#dat-gui-save-locally {
+  display: none;
+}
+
+.dg {
+  color: #eee;
+  text-shadow: 0 -1px #111;
+  font: 11px Lucida Grande, sans-serif;
+}
+
+.dg.main::-webkit-scrollbar {
+  width: 5px;
+  background: #1a1a1a;
+}
+
+.dg.main::-webkit-scrollbar-corner {
+  height: 0;
+  display: none;
+}
+
+.dg.main::-webkit-scrollbar-thumb {
+  background: #676767;
+  border-radius: 5px;
+}
+
+.dg li:not(.folder) {
+  background: #1a1a1a;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+.dg li.save-row {
+  background: #dad5cb;
+  border: 0;
+  line-height: 25px;
+}
+
+.dg li.save-row select {
+  width: 108px;
+  margin-left: 5px;
+}
+
+.dg li.save-row .button {
+  color: #fff;
+  text-shadow: 0 1px #b0a58f;
+  cursor: pointer;
+  background: #c5bdad;
+  border-radius: 2px;
+  margin-top: 1px;
+  margin-left: 5px;
+  padding: 4px 4px 5px;
+  font-size: 9px;
+  line-height: 7px;
+  box-shadow: 0 -1px #b0a58f;
+}
+
+.dg li.save-row .button.gears {
+  height: 7px;
+  width: 8px;
+  background: #c5bdad url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAANCAYAAAB/9ZQ7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQJJREFUeNpiYKAU/P//PwGIC/ApCABiBSAW+I8AClAcgKxQ4T9hoMAEUrxx2QSGN6+egDX+/vWT4e7N82AMYoPAx/evwWoYoSYbACX2s7KxCxzcsezDh3evFoDEBYTEEqycggWAzA9AuUSQQgeYPa9fPv6/YWm/Acx5IPb7ty/fw+QZblw67vDs8R0YHyQhgObx+yAJkBqmG5dPPDh1aPOGR/eugW0G4vlIoTIfyFcA+QekhhHJhPdQxbiAIguMBTQZrPD7108M6roWYDFQiIAAv6Aow/1bFwXgis+f2LUAynwoIaNcz8XNx3Dl7MEJUDGQpx9gtQ8YCueB+D26OECAAQDadt7e46D42QAAAABJRU5ErkJggg==") 2px 1px no-repeat;
+}
+
+.dg li.save-row .button:hover {
+  background-color: #bab19e;
+  box-shadow: 0 -1px #b0a58f;
+}
+
+.dg li.folder {
+  border-bottom: 0;
+}
+
+.dg li.title {
+  cursor: pointer;
+  background: #000 url("data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlI+hKgFxoCgAOw==") 6px 10px no-repeat;
+  border-bottom: 1px solid #fff3;
+  padding-left: 16px;
+}
+
+.dg .closed li.title {
+  background-image: url("data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlGIWqMCbWAEAOw==");
+}
+
+.dg .cr.boolean {
+  border-left: 3px solid #806787;
+}
+
+.dg .cr.function {
+  border-left: 3px solid #e61d5f;
+}
+
+.dg .cr.number {
+  border-left: 3px solid #2fa1d6;
+}
+
+.dg .cr.number input[type="text"] {
+  color: #2fa1d6;
+}
+
+.dg .cr.string {
+  border-left: 3px solid #1ed36f;
+}
+
+.dg .cr.string input[type="text"] {
+  color: #1ed36f;
+}
+
+.dg .cr.function:hover, .dg .cr.boolean:hover {
+  background: #111;
+}
+
+.dg .c input[type="text"] {
+  background: #303030;
+  outline: none;
+}
+
+.dg .c input[type="text"]:hover {
+  background: #3c3c3c;
+}
+
+.dg .c input[type="text"]:focus {
+  color: #fff;
+  background: #494949;
+}
+
+.dg .c .slider {
+  cursor: ew-resize;
+  background: #303030;
+}
+
+.dg .c .slider-fg {
+  background: #2fa1d6;
+}
+
+.dg .c .slider:hover {
+  background: #3c3c3c;
+}
+
+.dg .c .slider:hover .slider-fg {
+  background: #44abda;
+}
+
+/*# sourceMappingURL=index.67d0aa20.css.map */

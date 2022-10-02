@@ -5,34 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <title>Moonquake Map | Visualizer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
+    <script type="module" src="./js/scripts.js"></script>
 </head>
-
 <body>
     <header>
-        <!--<ul>
-			<li>
-				<a href="/src/index.html">
-                    <img src="./img/LOGO-WEB.png" alt="" width='350px'>
-                </a>     
-			</li>
-            <li>
-                <a href="/src/info.html" id="info">THE PROJECT</a>
-            </li>
-		</ul>  -->
-
-
 
         <div id="_header_right-6-6135" class="oxy-header-right">
 
-            <a id="info" class="ct-link-text" href="/src/info.html">THE PROJECT</a>
+        <a id="info" class="ct-link-text" href="./carousel/index.html">THE PROJECT</a>
         </div>
-
-
-
 
     </header>
     <main id="contenedor-general">
@@ -42,47 +27,57 @@
             aria-disabled="false">
             <span class="ui-button-text">
                 <a href="/src/index.html">
-                    <img src="./img/LOGO-WEB.png" width="350">
+                    <img id="logo" src="./img/LOGO-WEB.png" width="350">
                 </a>
 
             </span>
         </div>
-
 
         <div class="dg main a" style="user-select: none; width: 216px;">
             <div style="width: 6px; margin-left: -3px; height: 336px; cursor: ew-resize; position: absolute;">
             </div>
             <ul style="height: auto;">
                 <li class="cr string">
+                    <strong>To visualize moonquakes select year:</strong>
+                </li>
+                <li class="cr string">
                     <div>
-                        <span class="property-name">Year: </span>
                         <div class="c">
-                            <select name="" id="">
-                                <option value="">2004</option>
+                            <select name="selectYears" id="selectYears"> 
+                                <option value="moon" selected>Full moon</option>
+                                <option value="1973">1973</option>
+                                <option value="1975">1975</option>
+                                <option value="2005">2005</option>
+                                <option value="2006">2006</option>
                             </select>
-                            
                         </div>
                     </div>
                 </li>
-
-                
-                
-                <li class="cr function">
-                    <div><span class="property-name">Reset Camera</span>
-                        <div class="c">
-                            <div class="button"></div>
-                        </div>
+                <li class="cr string">
+                    <div>
+                        <button id="myButton">Explore</button>
                     </div>
                 </li>
-                
             </ul>
-            <div class="close-button" style="width: 216px;">Close Controls</div>
+            <li class="cr function">
+                <div>
+                    <div class="c">
+                        <button onclick="reset()">Refresh</button>
+                    </div>
+                </div>
+            </li>
         </div>
-
-
-        <script src="./js/scripts.js" type="module"></script>
     </main>
-
 </body>
+<script>
+    function reset(){
+        location.reload();        
+    } 
+</script>
+<script type="module">
+    import {loadTexture} from "./js/scripts.js"
+    document.getElementById("myButton").addEventListener("click",loadTexture);
+</script>
+
 
 </html>

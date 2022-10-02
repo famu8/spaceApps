@@ -1,0 +1,81 @@
+body {
+  color: #5a5a5a;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+#mapaCalor {
+  margin-top: 90px;
+}
+
+.easepRounded, .alsepRounded, .apolloRounded {
+  border-radius: 50%;
+}
+
+.moonquakeRounded {
+  border-radius: 50px;
+}
+
+.con, .aboutUsInfo {
+  text-align: center;
+}
+
+.initialInformation {
+  text-align: center;
+  font-size: 22px;
+}
+
+.nav-link {
+  font-size: 20px;
+}
+
+.carousel {
+  margin-bottom: 4rem;
+}
+
+.carousel-caption {
+  z-index: 10;
+  bottom: 8rem;
+}
+
+.carousel-item {
+  height: 32rem;
+}
+
+.marketing .col-lg-4 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.marketing .col-lg-4 p {
+  margin-left: .75rem;
+  margin-right: .75rem;
+}
+
+.featurette-divider {
+  margin: 5rem 0;
+}
+
+.featurette-heading {
+  letter-spacing: -.05rem;
+}
+
+@media (min-width: 40em) {
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+/*# sourceMappingURL=index.41b7ce7a.css.map */
